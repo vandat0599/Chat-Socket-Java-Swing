@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="ChatSocket_browser.jnlp">
+  <information>
+    <title>ChatSocket</title>
+    <vendor>user</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="ChatSocket.jar" size="56491" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="login.LoginForm"  name="ChatSocket" >
+  </applet-desc>
+  <update check="always"/>
+</jnlp>
