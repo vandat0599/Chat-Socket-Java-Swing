@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package server;
+package Controller;
 
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author user
  */
-public class ServerForm extends javax.swing.JFrame implements ServerHanler.ServerCoreCallback{
+public class ServerForm extends javax.swing.JFrame{
 
     /**
      * Creates new form ServerForm
@@ -92,32 +92,30 @@ public class ServerForm extends javax.swing.JFrame implements ServerHanler.Serve
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(69, 69, 69)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(229, 229, 229)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel4))
-                                .addGap(39, 39, 39)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtIP)
-                                    .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblUserOnline, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtPort, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(buttonStop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(buttonStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel4))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblUserOnline, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(buttonStop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(45, 45, 45)
-                                .addComponent(buttonStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(8, 8, 8)))
-                .addGap(176, 176, 176))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(txtPort, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtIP, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(104, 104, 104))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,29 +149,11 @@ public class ServerForm extends javax.swing.JFrame implements ServerHanler.Serve
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStopActionPerformed
-        // TODO add your handling code here:
-        lblUserOnline.setText("0");
-	try {
-            server.stopserver();
-            JOptionPane.showMessageDialog(null, "Stop Server");
-            lblStatus.setText("OFF");
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Stop Server");
-            lblStatus.setText("OFF");
-        }
+        
     }//GEN-LAST:event_buttonStopActionPerformed
 
     private void buttonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStartActionPerformed
-        // TODO add your handling code here:
-        try {
-            server = new ServerHanler(port, this);
-            lblStatus.setText("ON");
-            JOptionPane.showMessageDialog(null, "Server running...");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Something went wrong, please try again!!!");
-            e.printStackTrace();
-        }
+        
     }//GEN-LAST:event_buttonStartActionPerformed
 
     /**
@@ -211,17 +191,8 @@ public class ServerForm extends javax.swing.JFrame implements ServerHanler.Serve
         });
     }
     
-    public String getLabelUserOnline() {
-	return lblUserOnline.getText();
-    }
-
-    
     public void setup(){
-        try {
-            txtIP.setText(Inet4Address.getLocalHost().getHostAddress());
-	} catch (UnknownHostException e) {
-            e.printStackTrace();
-	}
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -237,18 +208,5 @@ public class ServerForm extends javax.swing.JFrame implements ServerHanler.Serve
     private javax.swing.JTextField txtIP;
     private javax.swing.JTextField txtPort;
     // End of variables declaration//GEN-END:variables
-    ServerHanler server;
-    public static int port = 8080;
-
-    @Override
-    public void updateNumberClient() {
-        int number = Integer.parseInt(lblUserOnline.getText());
-        lblUserOnline.setText(Integer.toString(number + 1));
-    }
-
-    @Override
-    public void decreaseNumberClient() {
-        int number = Integer.parseInt(lblUserOnline.getText());
-        lblUserOnline.setText(Integer.toString(number - 1));
-    }
+    
 }

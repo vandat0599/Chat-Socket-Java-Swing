@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package client;
+package Controller;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,40 +11,18 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import tags.Tags;
 
 /**
  *
  * @author user
  */
-public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientCallback{
+public class ClientHomeForm extends javax.swing.JFrame{
 
     /**
      * Creates new form HomeForm
      */
-    public ClientHomeForm(String arg, int arg1, String name, String msg){
-        initComponents();
-        IPClient = arg;
-        portClient = arg1;
-        nameUser = name;
-        dataUser = msg;
-      
-        try {
-            clientNode = new Client(IPClient, portClient, nameUser, dataUser, this);
-            setup();
-        } catch (Exception ex) {
-            Logger.getLogger(ClientHomeForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
     public ClientHomeForm(){
         initComponents();
-        try {
-            clientNode = new Client(IPClient, portClient, nameUser, dataUser, this);
-            setup();
-        } catch (Exception ex) {
-            Logger.getLogger(ClientHomeForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     /**
@@ -136,27 +114,6 @@ public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientC
 
     private void buttonConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConnectActionPerformed
         // TODO add your handling code here:
-        String name = listActive.getSelectedValue();
-        if (name.equals("") || Client.clientarray == null) {
-                JOptionPane.showMessageDialog(null, "Something went wrong, please try again!!");
-                return;
-        }
-        if (name.equals(nameUser)) {
-                JOptionPane.showMessageDialog(null, "Something went wrong, please try again!!");
-                return;
-        }
-        int size = Client.clientarray.size();
-        for (int i = 0; i < size; i++) {
-            if (name.equals(Client.clientarray.get(i).getName())) {
-                try {
-                    clientNode.intialNewChat(Client.clientarray.get(i).getHost(),Client.clientarray.get(i).getPort(), name);
-                    return;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        System.out.println(name);
     }//GEN-LAST:event_buttonConnectActionPerformed
 
     private void listActiveValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listActiveValueChanged
@@ -205,10 +162,8 @@ public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientC
         });
     }
 
-    private void setup() throws Exception {
-        labelName.setText(nameUser);
-        listActive.setModel(model);
-        clientNode = new Client(IPClient, portClient, nameUser, dataUser, this);
+    private void setup(){
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -218,24 +173,5 @@ public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientC
     private javax.swing.JLabel labelName;
     private javax.swing.JList<String> listActive;
     // End of variables declaration//GEN-END:variables
-    private Client clientNode;
-    private String IPClient = "", nameUser = "", dataUser = "";
-    private int portClient = 0;
-    static DefaultListModel<String> model = new DefaultListModel<>();
-    
-    @Override
-    public void updateFriend(String msg) {
-        model.addElement(msg);
-    }
 
-    @Override
-    public void resetList() {
-        model.clear();
-    }
-
-    @Override
-    public int request(String msg, boolean type) {
-        JFrame frameMessage = new JFrame();
-        return Tags.show(frameMessage, msg, type);
-    }
 }

@@ -8,9 +8,9 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ChatSocket.jar" size="56491" download="eager" />
+    <jar href="ChatSocket.jar" size="23189" download="eager" />
   </resources>
-  <application-desc main-class="login.LoginForm"  name="ChatSocket" >
+  <application-desc main-class="Controller.LoginForm"  name="ChatSocket" >
   </application-desc>
   <update check="always"/>
 </jnlp>
