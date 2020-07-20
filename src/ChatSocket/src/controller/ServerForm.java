@@ -5,15 +5,21 @@
  */
 package Controller;
 
+import Common.AppConstanst;
+import Model.PJ.User;
+import SocketHandler.TCPServer;
+import Util.AppUtils;
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author user
  */
-public class ServerForm extends javax.swing.JFrame{
+public class ServerForm extends javax.swing.JFrame implements TCPServer.TCPServerCallback{
 
     /**
      * Creates new form ServerForm
@@ -35,14 +41,14 @@ public class ServerForm extends javax.swing.JFrame{
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         buttonStart = new java.awt.Button();
-        txtIP = new javax.swing.JTextField();
+        labelIP = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtPort = new javax.swing.JTextField();
+        labelPort = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        lblUserOnline = new javax.swing.JLabel();
+        labelCountClient = new javax.swing.JLabel();
         buttonStop = new java.awt.Button();
         jLabel6 = new javax.swing.JLabel();
-        lblStatus = new javax.swing.JLabel();
+        labelStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,23 +64,23 @@ public class ServerForm extends javax.swing.JFrame{
             }
         });
 
-        txtIP.setEditable(false);
-        txtIP.setEnabled(false);
-        txtIP.setFocusTraversalKeysEnabled(false);
-        txtIP.setFocusable(false);
+        labelIP.setEditable(false);
+        labelIP.setEnabled(false);
+        labelIP.setFocusTraversalKeysEnabled(false);
+        labelIP.setFocusable(false);
 
         jLabel3.setText("Port");
 
-        txtPort.setText("8080");
-        txtPort.setDragEnabled(false);
-        txtPort.setEnabled(false);
-        txtPort.setFocusTraversalKeysEnabled(false);
-        txtPort.setFocusable(false);
-        txtPort.setRequestFocusEnabled(false);
+        labelPort.setText("3200");
+        labelPort.setDragEnabled(false);
+        labelPort.setEnabled(false);
+        labelPort.setFocusTraversalKeysEnabled(false);
+        labelPort.setFocusable(false);
+        labelPort.setRequestFocusEnabled(false);
 
         jLabel4.setText("Connected");
 
-        lblUserOnline.setText("0");
+        labelCountClient.setText("0");
 
         buttonStop.setLabel("Stop");
         buttonStop.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +91,7 @@ public class ServerForm extends javax.swing.JFrame{
 
         jLabel6.setText("Status");
 
-        lblStatus.setText("OFF");
+        labelStatus.setText("OFF");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,13 +113,13 @@ public class ServerForm extends javax.swing.JFrame{
                             .addComponent(jLabel4))
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblUserOnline, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelCountClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
-                                    .addComponent(txtPort, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtIP, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(labelPort, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelIP, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(104, 104, 104))
         );
@@ -125,19 +131,19 @@ public class ServerForm extends javax.swing.JFrame{
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(lblStatus))
+                    .addComponent(labelStatus))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(lblUserOnline))
+                    .addComponent(labelCountClient))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buttonStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,11 +155,11 @@ public class ServerForm extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStopActionPerformed
-        
+        server.stop();
     }//GEN-LAST:event_buttonStopActionPerformed
 
     private void buttonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStartActionPerformed
-        
+        server.start();
     }//GEN-LAST:event_buttonStartActionPerformed
 
     /**
@@ -192,7 +198,12 @@ public class ServerForm extends javax.swing.JFrame{
     }
     
     public void setup(){
-       
+       server = new TCPServer(this);
+        try {
+            labelIP.setText(AppConstanst.getServerIP());
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(ServerForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -203,10 +214,32 @@ public class ServerForm extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel lblStatus;
-    private javax.swing.JLabel lblUserOnline;
-    private javax.swing.JTextField txtIP;
-    private javax.swing.JTextField txtPort;
+    private javax.swing.JLabel labelCountClient;
+    private javax.swing.JTextField labelIP;
+    private javax.swing.JTextField labelPort;
+    private javax.swing.JLabel labelStatus;
     // End of variables declaration//GEN-END:variables
-    
+    private TCPServer server;
+
+    @Override
+    public void onStartedServer() {
+        labelStatus.setText("ON");
+        JOptionPane.showMessageDialog(null, "Server is running...");
+    }
+
+    @Override
+    public void onStoppedServer() {
+        labelStatus.setText("OFF");
+        JOptionPane.showMessageDialog(null, "Stopped server!!!");
+    }
+
+    @Override
+    public void updateClientCount(int count) {
+        labelCountClient.setText("" + count);
+    }
+
+    @Override
+    public void onError(String e) {
+        JOptionPane.showMessageDialog(null, "Something went wrong, please try again!!!" + "\nError: " + e);
+    }
 }

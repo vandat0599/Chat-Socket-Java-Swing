@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model.pj;
+package Model.PJ;
+
+import Util.AppUtils;
 
 /**
  *
@@ -53,5 +55,8 @@ public class User {
         this.isOnline = isOnline;
     }
     
+    public void writeMessage(String message, int receivePort){
+        AppUtils.saveObject(message, getPort() + "_" + receivePort + ".txt");
+    }
     
 }

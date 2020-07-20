@@ -5,6 +5,12 @@
  */
 package Controller;
 
+import Common.AppConstanst;
+import Model.PJ.User;
+import Util.AppUtils;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author user
@@ -27,12 +33,15 @@ public class RegisterForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        textFieldUserName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        textFieldPassWord = new javax.swing.JTextField();
+        buttonSignup = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,10 +52,10 @@ public class RegisterForm extends javax.swing.JFrame {
 
         jLabel3.setText("PassWord");
 
-        jButton1.setText("SignUp");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonSignup.setText("SignUp");
+        buttonSignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonSignupActionPerformed(evt);
             }
         });
 
@@ -62,15 +71,15 @@ public class RegisterForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
+                            .addComponent(buttonSignup)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))))))
+                                    .addComponent(textFieldUserName)
+                                    .addComponent(textFieldPassWord, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))))))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -81,22 +90,35 @@ public class RegisterForm extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textFieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldPassWord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(33, 33, 33)
-                .addComponent(jButton1)
+                .addComponent(buttonSignup)
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignupActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        ArrayList<User> accounts = AppUtils.getArrayObject(User.class, AppConstanst.ACCOUNT_FILE_NAME);
+        if (textFieldPassWord.getText().equals("") || textFieldUserName.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Please fillup all the form!!!");
+        }else{
+            if (accounts.stream().filter((user) -> user.getUserName().equals(textFieldUserName.getText())).count() > 0){
+                JOptionPane.showMessageDialog(null, "UserName has been taken!!!, please try again!!!");
+            }else{
+                AppUtils.saveObject(new User(textFieldUserName.getText(), textFieldPassWord.getText(), 3200), AppConstanst.ACCOUNT_FILE_NAME);
+                JOptionPane.showMessageDialog(null, "Signup successful!!\n Back to login??");
+                (new LoginForm()).setVisible(true);
+                this.dispose();
+            }
+        }
+    }//GEN-LAST:event_buttonSignupActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,11 +156,12 @@ public class RegisterForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonSignup;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField textFieldPassWord;
+    private javax.swing.JTextField textFieldUserName;
     // End of variables declaration//GEN-END:variables
 }
