@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package controller;
 
-import Common.AppConstanst;
-import SocketHandler.ServerHanler;
+import common.AppConstanst;
+import socket.ServerHanler;
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
 import javax.swing.JOptionPane;

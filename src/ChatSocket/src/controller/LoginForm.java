@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package controller;
 
-import Common.AppConstanst;
-import Controller.ClientHomeForm;
-import Model.User;
-import Repo.UserRepo;
-import SocketHandler.tags.Encode;
-import Util.AppUtils;
+import common.AppConstanst;
+import controller.ClientHomeForm;
+import model.User;
+import repo.UserRepo;
+import socket.tags.Encode;
+import util.AppUtils;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Inet4Address;

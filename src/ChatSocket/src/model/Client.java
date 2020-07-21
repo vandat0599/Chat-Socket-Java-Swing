@@ -1,7 +1,8 @@
-package Model;
+package model;
 
-import Controller.ChatForm;
-import SocketHandler.ClientServer;
+import controller.ChatForm;
+import controller.ChatForm;
+import socket.ClientServer;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -11,9 +12,9 @@ import java.net.Socket;
 import java.net.SocketAddress;
 import java.util.ArrayList;
 
-import SocketHandler.tags.Decode;
-import SocketHandler.tags.Encode;
-import SocketHandler.tags.Tags;
+import socket.tags.Decode;
+import socket.tags.Encode;
+import socket.tags.Tags;
 
 /**
  *

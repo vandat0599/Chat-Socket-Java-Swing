@@ -1,10 +1,10 @@
-package SocketHandler.tags;
+package socket.tags;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import Model.Peer;
+import model.Peer;
 
 /**
  *

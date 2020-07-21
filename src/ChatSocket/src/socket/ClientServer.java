@@ -1,15 +1,16 @@
-package SocketHandler;
+package socket;
 
-import Controller.ChatForm;
+import controller.ChatForm;
+import controller.ChatForm;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import SocketHandler.tags.Decode;
-import SocketHandler.tags.Tags;
-import Model.Client;
+import socket.tags.Decode;
+import socket.tags.Tags;
+import model.Client;
 
 /**
  *

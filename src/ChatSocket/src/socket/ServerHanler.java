@@ -1,4 +1,4 @@
-package SocketHandler;
+package socket;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -6,9 +6,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
-import Model.Peer;
-import SocketHandler.tags.Decode;
-import SocketHandler.tags.Tags;
+import model.Peer;
+import socket.tags.Decode;
+import socket.tags.Tags;
 
 /**
  *

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Repo;
+package repo;
 
-import Common.AppConstanst;
-import Model.User;
-import Util.AppUtils;
+import common.AppConstanst;
+import model.User;
+import util.AppUtils;
 import java.util.ArrayList;
 
 /**

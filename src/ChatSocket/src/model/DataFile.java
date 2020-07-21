@@ -1,8 +1,8 @@
-package Model;
+package model;
 
 import java.io.Serializable;
 
-import SocketHandler.tags.Tags;
+import socket.tags.Tags;
 
 /**
  *
