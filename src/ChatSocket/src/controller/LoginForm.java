@@ -127,6 +127,7 @@ public class LoginForm extends javax.swing.JFrame {
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         // TODO add your handling code here:
         String name = textFieldUserName.getText();
+        String pass = textFieldPass.getText();
         User user = new User(textFieldUserName.getText(), textFieldPass.getText());
         if (UserRepo.isExistUser(user)){
             try {
@@ -143,7 +144,7 @@ public class LoginForm extends javax.swing.JFrame {
                 msg = (String) serverInputStream.readObject();
                 serverSocket.close();
                 
-                new ClientHomeForm(AppConstanst.getServerIP(), portPeer, name, msg).setVisible(true);
+                new ClientHomeForm(AppConstanst.getServerIP(), portPeer, msg, new User(name, pass)).setVisible(true);
                 this.dispose();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Something went wrong, please try again!!!");

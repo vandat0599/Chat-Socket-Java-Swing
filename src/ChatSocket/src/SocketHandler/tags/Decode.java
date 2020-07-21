@@ -6,6 +6,10 @@ import java.util.regex.Pattern;
 
 import Model.Peer;
 
+/**
+ *
+ * @author user
+ */
 public class Decode {
 
 	private static Pattern createAccount = Pattern

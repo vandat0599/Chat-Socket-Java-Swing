@@ -1,5 +1,9 @@
 package Model;
 
+/**
+ *
+ * @author user
+ */
 public class Peer {
 
 	private String namePeer = "";

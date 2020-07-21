@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 import SocketHandler.tags.Tags;
 
+/**
+ *
+ * @author user
+ */
 @SuppressWarnings("serial")
 public class DataFile implements Serializable{
 

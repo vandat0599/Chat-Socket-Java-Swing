@@ -3,6 +3,10 @@ package SocketHandler.tags;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ *
+ * @author user
+ */
 public class Encode {
 
 	private static Pattern checkMessage = Pattern.compile("[^<>]*[<>]");

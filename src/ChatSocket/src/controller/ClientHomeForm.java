@@ -6,6 +6,7 @@
 package Controller;
 
 import Model.Client;
+import Model.User;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -23,15 +24,15 @@ public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientC
     /**
      * Creates new form HomeForm
      */
-    public ClientHomeForm(String arg, int arg1, String name, String msg){
+    public ClientHomeForm(String arg, int arg1, String msg, User user){
         initComponents();
         IPClient = arg;
         portClient = arg1;
-        nameUser = name;
         dataUser = msg;
+        this.user = user;
       
         try {
-            clientNode = new Client(IPClient, portClient, nameUser, dataUser, this);
+            clientNode = new Client(IPClient, portClient, user.getUserName(), dataUser, this);
             setup();
         } catch (Exception ex) {
             Logger.getLogger(ClientHomeForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -41,7 +42,7 @@ public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientC
     public ClientHomeForm(){
         initComponents();
         try {
-            clientNode = new Client(IPClient, portClient, nameUser, dataUser, this);
+            clientNode = new Client(IPClient, portClient, user.getUserName(), dataUser, this);
             setup();
         } catch (Exception ex) {
             Logger.getLogger(ClientHomeForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -139,12 +140,12 @@ public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientC
         // TODO add your handling code here:
         String name = listActive.getSelectedValue();
         if (name.equals("") || Client.clientarray == null) {
-                JOptionPane.showMessageDialog(null, "Something went wrong, please try again!!");
-                return;
+            JOptionPane.showMessageDialog(null, "Something went wrong, please try again!!");
+            return;
         }
-        if (name.equals(nameUser)) {
-                JOptionPane.showMessageDialog(null, "Something went wrong, please try again!!");
-                return;
+        if (name.equals(user.getUserName())) {
+            JOptionPane.showMessageDialog(null, "Something went wrong, please try again!!");
+            return;
         }
         int size = Client.clientarray.size();
         for (int i = 0; i < size; i++) {
@@ -207,9 +208,9 @@ public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientC
     }
 
     private void setup() throws Exception {
-        labelName.setText(nameUser);
+        labelName.setText(user.getUserName());
         listActive.setModel(model);
-        clientNode = new Client(IPClient, portClient, nameUser, dataUser, this);
+        clientNode = new Client(IPClient, portClient, user.getUserName(), dataUser, this);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -220,9 +221,10 @@ public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientC
     private javax.swing.JList<String> listActive;
     // End of variables declaration//GEN-END:variables
     private Client clientNode;
-    private String IPClient = "", nameUser = "", dataUser = "";
+    private String IPClient = "", dataUser = "";
     private int portClient = 0;
     static DefaultListModel<String> model = new DefaultListModel<>();
+    private User user;
     
     @Override
     public void updateFriend(String msg) {

@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Common.AppConstanst;
 import SocketHandler.ServerHanler;
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
@@ -170,7 +171,7 @@ public class ServerForm extends javax.swing.JFrame implements ServerHanler.Serve
     private void buttonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStartActionPerformed
         // TODO add your handling code here:
         try {
-            server = new ServerHanler(port, this);
+            server = new ServerHanler(AppConstanst.SERVER_PORT, this);
             lblStatus.setText("ON");
             JOptionPane.showMessageDialog(null, "Server running...");
         } catch (Exception e) {
@@ -241,7 +242,6 @@ public class ServerForm extends javax.swing.JFrame implements ServerHanler.Serve
     private javax.swing.JTextField txtPort;
     // End of variables declaration//GEN-END:variables
     ServerHanler server;
-    public static int port = 8080;
 
     @Override
     public void updateNumberClient() {

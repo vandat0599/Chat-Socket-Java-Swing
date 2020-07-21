@@ -15,6 +15,10 @@ import SocketHandler.tags.Decode;
 import SocketHandler.tags.Encode;
 import SocketHandler.tags.Tags;
 
+/**
+ *
+ * @author user
+ */
 public class Client implements ClientServer.ClientServerCallback{
 
     public static ArrayList<Peer> clientarray = null;

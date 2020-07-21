@@ -2,6 +2,20 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Controller/ClientHomeForm.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Model/PJ/Message.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Controller/ChatForm.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Model/PJ/User.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/SocketHandler/TCPClient.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Controller/RegisterForm.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Controller/LoginForm.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Repo/UserRepo.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Util/AppUtils.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Model/PJ/SocketUserServerNode.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Controller/ServerForm.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Common/AppConstanst.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/SocketHandler/TCPServer.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -10,6 +10,10 @@ import Model.Peer;
 import SocketHandler.tags.Decode;
 import SocketHandler.tags.Tags;
 
+/**
+ *
+ * @author user
+ */
 public class ServerHanler {
 
 	private ArrayList<Peer> dataPeer = null;	

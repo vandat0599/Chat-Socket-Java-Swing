@@ -11,6 +11,10 @@ import SocketHandler.tags.Decode;
 import SocketHandler.tags.Tags;
 import Model.Client;
 
+/**
+ *
+ * @author user
+ */
 public class ClientServer {
 
 	private String username = "";

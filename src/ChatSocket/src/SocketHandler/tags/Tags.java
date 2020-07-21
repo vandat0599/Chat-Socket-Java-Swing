@@ -3,6 +3,10 @@ package SocketHandler.tags;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author user
+ */
 public class Tags {
 
 	public static int IN_VALID = -1;
