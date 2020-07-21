@@ -39,25 +39,23 @@ public class AppUtils {
         String jsonString = objectToJSon(t);
     	File file= new File(fileName);
     	try {
-            if(!file.exists()){
-                file.createNewFile();
-            }
-                FileOutputStream fos;
-                try {
-                    fos = new FileOutputStream(file, true);
-                    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
-                    bw.write(jsonString);
-                    bw.write("\n");
-                    bw.close();
-                    System.out.print("save successful");
-                } catch (FileNotFoundException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            } catch (IOException e) {
+            file.createNewFile();
+            FileOutputStream fos;
+            try {
+                fos = new FileOutputStream(file, true);
+                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+                bw.write(jsonString);
+                bw.write("\n");
+                bw.close();
+                System.out.print("save successful");
+            } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 	}
 	
 	public static<T> T getObject(Class<T> t, String fileName) {

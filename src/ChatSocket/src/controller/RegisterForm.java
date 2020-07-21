@@ -6,7 +6,7 @@
 package Controller;
 
 import Common.AppConstanst;
-import Model.PJ.User;
+import Model.User;
 import Util.AppUtils;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -112,7 +112,7 @@ public class RegisterForm extends javax.swing.JFrame {
             if (accounts.stream().filter((user) -> user.getUserName().equals(textFieldUserName.getText())).count() > 0){
                 JOptionPane.showMessageDialog(null, "UserName has been taken!!!, please try again!!!");
             }else{
-                AppUtils.saveObject(new User(textFieldUserName.getText(), textFieldPassWord.getText(), 3200), AppConstanst.ACCOUNT_FILE_NAME);
+                AppUtils.saveObject(new User(textFieldUserName.getText(), textFieldPassWord.getText()), AppConstanst.ACCOUNT_FILE_NAME);
                 JOptionPane.showMessageDialog(null, "Signup successful!!\n Back to login??");
                 (new LoginForm()).setVisible(true);
                 this.dispose();

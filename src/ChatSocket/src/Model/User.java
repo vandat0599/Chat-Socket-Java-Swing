@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model.PJ;
-
-import Util.AppUtils;
+package Model;
 
 /**
  *
@@ -14,13 +12,14 @@ import Util.AppUtils;
 public class User {
     String userName;
     String passWord;
-    int port;
-    boolean isOnline = false;
 
-    public User(String userName, String passWord, int port) {
+    public User(String userName, String passWord) {
         this.userName = userName;
         this.passWord = passWord;
-        this.port = port;
+    }
+
+    public User() {
+        
     }
 
     public String getUserName() {
@@ -38,25 +37,5 @@ public class User {
     public void setPassWord(String passWord) {
         this.passWord = passWord;
     }
-
-    public int getPort() {
-        return port;
-    }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
-
-    public boolean isIsOnline() {
-        return isOnline;
-    }
-
-    public void setIsOnline(boolean isOnline) {
-        this.isOnline = isOnline;
-    }
-    
-    public void writeMessage(String message, int receivePort){
-        AppUtils.saveObject(message, getPort() + "_" + receivePort + ".txt");
-    }
-    
+  
 }

@@ -5,24 +5,47 @@
  */
 package Controller;
 
+import Model.Client;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import SocketHandler.tags.Tags;
 
 /**
  *
  * @author user
  */
-public class ClientHomeForm extends javax.swing.JFrame{
+public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientCallback{
 
     /**
      * Creates new form HomeForm
      */
+    public ClientHomeForm(String arg, int arg1, String name, String msg){
+        initComponents();
+        IPClient = arg;
+        portClient = arg1;
+        nameUser = name;
+        dataUser = msg;
+      
+        try {
+            clientNode = new Client(IPClient, portClient, nameUser, dataUser, this);
+            setup();
+        } catch (Exception ex) {
+            Logger.getLogger(ClientHomeForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public ClientHomeForm(){
         initComponents();
+        try {
+            clientNode = new Client(IPClient, portClient, nameUser, dataUser, this);
+            setup();
+        } catch (Exception ex) {
+            Logger.getLogger(ClientHomeForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -34,162 +57,118 @@ public class ClientHomeForm extends javax.swing.JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
         labelName = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        buttonConnect = new java.awt.Button();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listActiveUser = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        labelUserSelected = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        textFieldMessage = new javax.swing.JTextField();
-        buttonSendMessage = new javax.swing.JButton();
-        labelFilePath = new javax.swing.JLabel();
-        buttonChooseFile = new javax.swing.JButton();
-
-        jMenuItem1.setText("jMenuItem1");
+        listActive = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         labelName.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         labelName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelName.setText("UserName");
+        labelName.setText("No Name");
         labelName.setToolTipText("");
 
         jLabel2.setText("Online Users");
 
-        listActiveUser.setModel(new javax.swing.AbstractListModel<String>() {
+        buttonConnect.setLabel("Connect");
+        buttonConnect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonConnectActionPerformed(evt);
+            }
+        });
+
+        listActive.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        listActiveUser.addMouseListener(new java.awt.event.MouseAdapter() {
+        listActive.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                listActiveUserMouseClicked(evt);
+                listActiveMouseClicked(evt);
             }
         });
-        listActiveUser.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        listActive.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                listActiveUserValueChanged(evt);
+                listActiveValueChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(listActiveUser);
-
-        jTextPane1.setEditable(false);
-        jScrollPane2.setViewportView(jTextPane1);
-
-        labelUserSelected.setText("User Selected");
-
-        jButton1.setText("Logout");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        textFieldMessage.setText("Message");
-
-        buttonSendMessage.setText("Send");
-        buttonSendMessage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSendMessageActionPerformed(evt);
-            }
-        });
-
-        labelFilePath.setText("File path");
-
-        buttonChooseFile.setText("Choose File");
+        jScrollPane1.setViewportView(listActive);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(textFieldMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(buttonSendMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(labelFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonChooseFile)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(labelUserSelected)
-                                .addGap(234, 234, 234)))))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(buttonConnect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(0, 580, Short.MAX_VALUE)))))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(272, 272, 272)
+                .addComponent(labelName, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(labelName))
-                .addGap(18, 18, 18)
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addComponent(labelName)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelUserSelected)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonSendMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(textFieldMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelFilePath)
-                            .addComponent(buttonChooseFile))
-                        .addGap(0, 53, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonConnect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void listActiveUserValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listActiveUserValueChanged
+    private void buttonConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConnectActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_listActiveUserValueChanged
+        String name = listActive.getSelectedValue();
+        if (name.equals("") || Client.clientarray == null) {
+                JOptionPane.showMessageDialog(null, "Something went wrong, please try again!!");
+                return;
+        }
+        if (name.equals(nameUser)) {
+                JOptionPane.showMessageDialog(null, "Something went wrong, please try again!!");
+                return;
+        }
+        int size = Client.clientarray.size();
+        for (int i = 0; i < size; i++) {
+            if (name.equals(Client.clientarray.get(i).getName())) {
+                try {
+                    clientNode.intialNewChat(Client.clientarray.get(i).getHost(),Client.clientarray.get(i).getPort(), name);
+                    return;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        System.out.println(name);
+    }//GEN-LAST:event_buttonConnectActionPerformed
 
-    private void listActiveUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listActiveUserMouseClicked
+    private void listActiveValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listActiveValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listActiveValueChanged
+
+    private void listActiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listActiveMouseClicked
         // TODO add your handling code here:
 //        String value = (String)listActive.getModel().getElementAt(listActive.locationToIndex(evt.getPoint()));
 //        System.out.println(value);
-    }//GEN-LAST:event_listActiveUserMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        (new LoginForm()).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void buttonSendMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendMessageActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonSendMessageActionPerformed
+    }//GEN-LAST:event_listActiveMouseClicked
 
     /**
      * @param args the command line arguments
@@ -227,24 +206,37 @@ public class ClientHomeForm extends javax.swing.JFrame{
         });
     }
 
-    private void setup(){
-        
+    private void setup() throws Exception {
+        labelName.setText(nameUser);
+        listActive.setModel(model);
+        clientNode = new Client(IPClient, portClient, nameUser, dataUser, this);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonChooseFile;
-    private javax.swing.JButton buttonSendMessage;
-    private javax.swing.JButton jButton1;
+    private java.awt.Button buttonConnect;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JLabel labelFilePath;
     private javax.swing.JLabel labelName;
-    private javax.swing.JLabel labelUserSelected;
-    private javax.swing.JList<String> listActiveUser;
-    private javax.swing.JTextField textFieldMessage;
+    private javax.swing.JList<String> listActive;
     // End of variables declaration//GEN-END:variables
+    private Client clientNode;
+    private String IPClient = "", nameUser = "", dataUser = "";
+    private int portClient = 0;
+    static DefaultListModel<String> model = new DefaultListModel<>();
+    
+    @Override
+    public void updateFriend(String msg) {
+        model.addElement(msg);
+    }
 
+    @Override
+    public void resetList() {
+        model.clear();
+    }
+
+    @Override
+    public int request(String msg, boolean type) {
+        JFrame frameMessage = new JFrame();
+        return Tags.show(frameMessage, msg, type);
+    }
 }

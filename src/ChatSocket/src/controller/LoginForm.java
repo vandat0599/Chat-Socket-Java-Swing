@@ -5,9 +5,11 @@
  */
 package Controller;
 
+import Common.AppConstanst;
 import Controller.ClientHomeForm;
-import Model.PJ.User;
+import Model.User;
 import Repo.UserRepo;
+import SocketHandler.tags.Encode;
 import Util.AppUtils;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -124,9 +126,29 @@ public class LoginForm extends javax.swing.JFrame {
     
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         // TODO add your handling code here:
-        if (UserRepo.isExistUser(new User(textFieldUserName.getText(), textFieldPass.getText(), 0))){
-            (new ClientHomeForm()).setVisible(true);
-            this.dispose();
+        String name = textFieldUserName.getText();
+        User user = new User(textFieldUserName.getText(), textFieldPass.getText());
+        if (UserRepo.isExistUser(user)){
+            try {
+                Random rd = new Random();
+                int portPeer = 10000 + rd.nextInt() % 1000;
+                InetAddress ipServer = InetAddress.getByName(AppConstanst.getServerIP());
+                int portServer = AppConstanst.SERVER_PORT;
+                Socket serverSocket = new Socket(ipServer, portServer);
+                String msg = Encode.getCreateAccount(name, Integer.toString(portPeer));
+                ObjectOutputStream serverOutputStream = new ObjectOutputStream(serverSocket.getOutputStream());
+                serverOutputStream.writeObject(msg);
+                serverOutputStream.flush();
+                ObjectInputStream serverInputStream = new ObjectInputStream(serverSocket.getInputStream());
+                msg = (String) serverInputStream.readObject();
+                serverSocket.close();
+                
+                new ClientHomeForm(AppConstanst.getServerIP(), portPeer, name, msg).setVisible(true);
+                this.dispose();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Something went wrong, please try again!!!");
+                e.printStackTrace();
+            }
         }else{
             AppUtils.showAlert("Something went wrong or Username, PassWord invalid!!");
         }

@@ -6,7 +6,7 @@
 package Repo;
 
 import Common.AppConstanst;
-import Model.PJ.User;
+import Model.User;
 import Util.AppUtils;
 import java.util.ArrayList;
 
