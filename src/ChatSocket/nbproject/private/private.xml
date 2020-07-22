@@ -3,19 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Controller/ClientHomeForm.java</file>
-            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Model/PJ/Message.java</file>
-            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Controller/ChatForm.java</file>
-            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Model/PJ/User.java</file>
-            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/SocketHandler/TCPClient.java</file>
-            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Controller/RegisterForm.java</file>
-            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Controller/LoginForm.java</file>
-            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Repo/UserRepo.java</file>
-            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Util/AppUtils.java</file>
-            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Model/PJ/SocketUserServerNode.java</file>
-            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Controller/ServerForm.java</file>
-            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/Common/AppConstanst.java</file>
-            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/SocketHandler/TCPServer.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/controller/ServerForm.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/common/AppConstanst.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/socket/ServerHanler.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/socket/ClientServer.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/repo/UserRepo.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/model/Client.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/controller/ChatForm.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/controller/RegisterForm.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/socket/tags/Encode.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/util/AppUtils.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/socket/tags/Decode.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/model/DataFile.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/controller/ClientHomeForm.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/socket/tags/Tags.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/model/Peer.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/controller/LoginForm.java</file>
+            <file>file:/Users/user/Documents/LearnDoc/University/Third-year/Java/Project/ChatSocketNew/src/ChatSocket/src/model/User.java</file>
         </group>
     </open-files>
 </project-private>
