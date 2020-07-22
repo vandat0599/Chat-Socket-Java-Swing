@@ -20,7 +20,7 @@ import socket.tags.Tags;
  *
  * @author user
  */
-public class Client implements ClientServer.ClientServerCallback{
+public class Client implements ClientServer.ClientServerCallback {
 
     public static ArrayList<Peer> clientarray = null;
     private ClientServer server;
@@ -28,13 +28,12 @@ public class Client implements ClientServer.ClientServerCallback{
     private int portServer = 8080;
     private String nameUser = "";
     private boolean isStop = false;
-    private static int portClient = 10000; 
+    private static int portClient = 10000;
     private int timeOut = 10000;  //time to each request is 10 seconds.
     private Socket socketClient;
     private ObjectInputStream serverInputStream;
     private ObjectOutputStream serverOutputStream;
     private ClientCallback callback;
-
 
     public Client(String arg, int arg1, String name, String dataUser, ClientCallback callback) throws Exception {
         IPserver = InetAddress.getByName(arg);
@@ -42,11 +41,11 @@ public class Client implements ClientServer.ClientServerCallback{
         portClient = arg1;
         clientarray = Decode.getAllUser(dataUser);
         this.callback = callback;
-        new Thread(new Runnable(){
-                @Override
-                public void run() {
-                    updateFriend();
-                }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                updateFriend();
+            }
         }).start();
         server = new ClientServer(nameUser, this);
         (new Request()).start();
@@ -83,6 +82,7 @@ public class Client implements ClientServer.ClientServerCallback{
     }
 
     public class Request extends Thread {
+
         @Override
         public void run() {
             super.run();
@@ -105,9 +105,9 @@ public class Client implements ClientServer.ClientServerCallback{
         ObjectInputStream receivedChat = new ObjectInputStream(connclient.getInputStream());
         String msg = (String) receivedChat.readObject();
         if (msg.equals(Tags.CHAT_DENY_TAG)) {
-                callback.request("Your friend denied connect with you!", false);
-                connclient.close();
-                return;
+            callback.request("Your friend denied connect with you!", false);
+            connclient.close();
+            return;
         }
         //not if
         new ChatForm(nameUser, guest, connclient, portClient);
@@ -127,21 +127,25 @@ public class Client implements ClientServer.ClientServerCallback{
         server.exit();
     }
 
-    public void updateFriend(){
+    public void updateFriend() {
         int size = clientarray.size();
         callback.resetList();
         //while loop
         int i = 0;
         while (i < size) {
-                if (!clientarray.get(i).getName().equals(nameUser))
-                        callback.updateFriend(clientarray.get(i).getName());
-                i++;
+            if (!clientarray.get(i).getName().equals(nameUser)) {
+                callback.updateFriend(clientarray.get(i).getName());
+            }
+            i++;
         }
     }
 
-    public interface ClientCallback{
+    public interface ClientCallback {
+
         public void updateFriend(String msg);
+
         public void resetList();
+
         public int request(String msg, boolean type);
     }
 }

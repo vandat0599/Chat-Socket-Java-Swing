@@ -19,18 +19,18 @@ import socket.tags.Tags;
  *
  * @author user
  */
-public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientCallback{
+public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientCallback {
 
     /**
      * Creates new form HomeForm
      */
-    public ClientHomeForm(String arg, int arg1, String msg, User user){
+    public ClientHomeForm(String arg, int arg1, String msg, User user) {
         initComponents();
         IPClient = arg;
         portClient = arg1;
         dataUser = msg;
         this.user = user;
-      
+
         try {
             clientNode = new Client(IPClient, portClient, user.getUserName(), dataUser, this);
             setup();
@@ -38,8 +38,8 @@ public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientC
             Logger.getLogger(ClientHomeForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public ClientHomeForm(){
+
+    public ClientHomeForm() {
         initComponents();
         try {
             clientNode = new Client(IPClient, portClient, user.getUserName(), dataUser, this);
@@ -151,7 +151,7 @@ public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientC
         for (int i = 0; i < size; i++) {
             if (name.equals(Client.clientarray.get(i).getName())) {
                 try {
-                    clientNode.intialNewChat(Client.clientarray.get(i).getHost(),Client.clientarray.get(i).getPort(), name);
+                    clientNode.intialNewChat(Client.clientarray.get(i).getHost(), Client.clientarray.get(i).getPort(), name);
                     return;
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -212,7 +212,7 @@ public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientC
         listActive.setModel(model);
         clientNode = new Client(IPClient, portClient, user.getUserName(), dataUser, this);
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button buttonConnect;
     private javax.swing.JLabel jLabel2;
@@ -225,7 +225,7 @@ public class ClientHomeForm extends javax.swing.JFrame implements Client.ClientC
     private int portClient = 0;
     static DefaultListModel<String> model = new DefaultListModel<>();
     private User user;
-    
+
     @Override
     public void updateFriend(String msg) {
         model.addElement(msg);

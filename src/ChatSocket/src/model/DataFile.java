@@ -9,7 +9,7 @@ import socket.tags.Tags;
  * @author user
  */
 @SuppressWarnings("serial")
-public class DataFile implements Serializable{
+public class DataFile implements Serializable {
 
     @SuppressWarnings("unused")
     private String openTags = Tags.FILE_DATA_OPEN_TAG;

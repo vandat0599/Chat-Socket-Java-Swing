@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author user
  */
-public class ServerForm extends javax.swing.JFrame implements ServerHanler.ServerCoreCallback{
+public class ServerForm extends javax.swing.JFrame implements ServerHanler.ServerCoreCallback {
 
     /**
      * Creates new form ServerForm
@@ -157,7 +157,7 @@ public class ServerForm extends javax.swing.JFrame implements ServerHanler.Serve
     private void buttonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStopActionPerformed
         // TODO add your handling code here:
         lblUserOnline.setText("0");
-	try {
+        try {
             server.stopserver();
             JOptionPane.showMessageDialog(null, "Stop Server");
             lblStatus.setText("OFF");
@@ -214,18 +214,17 @@ public class ServerForm extends javax.swing.JFrame implements ServerHanler.Serve
             }
         });
     }
-    
+
     public String getLabelUserOnline() {
-	return lblUserOnline.getText();
+        return lblUserOnline.getText();
     }
 
-    
-    public void setup(){
+    public void setup() {
         try {
             txtIP.setText(Inet4Address.getLocalHost().getHostAddress());
-	} catch (UnknownHostException e) {
+        } catch (UnknownHostException e) {
             e.printStackTrace();
-	}
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

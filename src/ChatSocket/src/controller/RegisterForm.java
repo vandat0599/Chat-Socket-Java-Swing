@@ -106,12 +106,12 @@ public class RegisterForm extends javax.swing.JFrame {
     private void buttonSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignupActionPerformed
         // TODO add your handling code here:
         ArrayList<User> accounts = AppUtils.getArrayObject(User.class, AppConstanst.ACCOUNT_FILE_NAME);
-        if (textFieldPassWord.getText().equals("") || textFieldUserName.getText().equals("")){
+        if (textFieldPassWord.getText().equals("") || textFieldUserName.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Please fillup all the form!!!");
-        }else{
-            if (accounts.stream().filter((user) -> user.getUserName().equals(textFieldUserName.getText())).count() > 0){
+        } else {
+            if (accounts.stream().filter((user) -> user.getUserName().equals(textFieldUserName.getText())).count() > 0) {
                 JOptionPane.showMessageDialog(null, "UserName has been taken!!!, please try again!!!");
-            }else{
+            } else {
                 AppUtils.saveObject(new User(textFieldUserName.getText(), textFieldPassWord.getText()), AppConstanst.ACCOUNT_FILE_NAME);
                 JOptionPane.showMessageDialog(null, "Signup successful!!\n Back to login??");
                 (new LoginForm()).setVisible(true);
